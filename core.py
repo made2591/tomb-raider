@@ -24,6 +24,12 @@ LEVELS = [
 # character printing pause
 CHAR_PAUSE = 0
 
+# velocity description
+VELOCITY = {'slow' : 0.04, 'medium' : 0.03, 'fast': 0.02, 'debug': 0}
+
+# to add intermediate states in manual game definition
+STEP_OFFSET = 10
+
 # exit command
 EXIT_COMMAND = "exit"
 
@@ -40,19 +46,21 @@ STARTING_SEQUENCE = "> "
 DEFAULT_ACTION = "move up"
 
 # items keywords
-ITESM_KEYWORDS = ["footprints", "key", "wolf", "wolves", "bear", "small medipack", "large medipack", "lever", "secret"]
+ITESM_KEYWORDS = ["footprints", "key", "wolf", "wolves", "bear", "small medipack", "large medipack", "lever", "secret", "slots"]
 
 # stopwords
 STOPWORDS = ["the", "a", "with"]
 
 # game structure
-GAME = {
+GAME_STRUCTURE = {
 		"player":{
 		  "name":"made2591",
 		  "life":100,
 		  "items":[],
-		  "level":"cave"
+		  "level":"cave",
 		  "step":0,
+		  "velocity": "debug",
+		  "columns" : 80
 		},
 		"defaultMessages":{
 			"default": "You can't do this right now.",
@@ -171,12 +179,15 @@ def createGame(defaultAction = DEFAULT_ACTION):
 	# clean steps
 	steps = [x.strip().replace("\n","") for x in steps if x != "\n" or len(x.strip().replace("\n","")) > 1]
 
+	# index of state
+	index = 0
+
 	# for each step
-	for index, step in enumerate(steps):
+	for step in steps:
 
 		# create level structure
-		game["levels"]["cave"]["steps"][index] = {
-			"stateDescription" : step,
+		GAME_STRUCTURE["levels"]["cave"]["steps"][index] = {
+			"stepDescription" : step,
 			"availableItems" : [],
 			"availableActions" : {},
 		}
@@ -184,32 +195,50 @@ def createGame(defaultAction = DEFAULT_ACTION):
 		# insert items
 		for keyword in ITESM_KEYWORDS:
 			
-			# check if keyword of item appears in state description and it not already added to items list
-			if keyword in step and keyword.lower().strip() not in game["levels"]["cave"]["steps"][index]["availableItems"]:
+			# check if keyword of item appears in step description and it not already added to items list
+			if keyword[:-1].lower().strip() in step.lower().strip() and keyword.lower().strip() not in GAME_STRUCTURE["levels"]["cave"]["steps"][index]["availableItems"]:
 
 				# add to items
-				availableItems.append(keyword.lower().strip())
+				GAME_STRUCTURE["levels"]["cave"]["steps"][index]["availableItems"].append(keyword.lower().strip())
 
 		# create level structure
-		game["levels"]["cave"]["steps"][index]["availableActions"] = {
-			"walk" : index+1,
-			"walk straight" : index+1,
+		GAME_STRUCTURE["levels"]["cave"]["steps"][index]["availableActions"] = {
+
+			"walk" : str(index+STEP_OFFSET),
+			"walk straight" : str(index+STEP_OFFSET),
 			"walk back" : "",
 			"walk left" : "",
 			"walk right" : "",
-			"run" : index+1,
-			"run straight" : index+1,
+
+			"run" : str(index+STEP_OFFSET),
+			"run straight" : str(index+STEP_OFFSET),
 			"run back" : "",
 			"run left" : "",
 			"run right" : "",
+
+			"jump" : "",
+			"jump straight" : "",
+			"jump back" : "",
+			"jump left" : "",
+			"jump right" : "",
+
+			"climb up" : "",
+			"climb on" : "",
+
+			"come up" : "",
+			"come down" : "",
+
 			"examine" : "",
 			"get" : "",
 			"use" : "",
+
 			"save": ""
 		}
 
-	# for index, state in enumerate(states):
-	# 	print "\ta"+str(index)+"[ label=\""+state+"\" ];"
+		index += STEP_OFFSET
+
+	# for index, step in enumerate(steps):
+	# 	print "\ta"+str(index)+"[ label=\""+step+"\" ];"
 	# 	if index > 0 and index % 2 == 1:
 	# 		print "\ta"+str(index-1)+" -> a"+str(index)+" [ label=\""+defaultAction+"\" ];"
 
@@ -217,7 +246,7 @@ def createGame(defaultAction = DEFAULT_ACTION):
 	with open("./levels/caves_base.json", "wb") as f:
 
 		# save json output
-		f.write(json.dumps(game, indent=4, ensure_ascii=False, sort_keys=True))
+		f.write(json.dumps(GAME_STRUCTURE, indent=4, ensure_ascii=False, sort_keys=True))
 
 # simulate printing of sentence for vintage gaming experience
 def printSentence(sentence, pause = CHAR_PAUSE, columns = COLUMNS_DIM):
@@ -264,53 +293,53 @@ def printSentence(sentence, pause = CHAR_PAUSE, columns = COLUMNS_DIM):
 		# increment columns counter
 		counter += 1
 
-
+# start gaming
 def playGame():
 
 	# load game from file
-	game = json.loads((open("./levels/caves_base.json", "r").read()))
+	game = json.loads((open("./levels/caves_manual.json", "r").read()))
 
 	# vintage print welcome sentence
 	printSentence(STARTING_SEQUENCE+game["levels"]["cave"]["levelDescription"], 
-				  pause = 0.03, 
-				  columns = 80)
+				  pause = VELOCITY[game["player"]["velocity"]], 
+				  columns = game["player"]["columns"])
 
-	# get states sorted
-	states = sorted(game["levels"]["cave"]["states"].keys())
+	# get steps sorted
+	steps = sorted(game["levels"]["cave"]["steps"].keys())
 
 	# spacing and start of game	
-	print "\n\n"
+	print "\n"
 	raw_input(STARTING_SEQUENCE)
 
-	# set actual state to the first in sequence
-	actualState = states[0]
+	# set actual step to the first in sequence
+	actualStep = steps[0]
 
-	# set the final state to the last in sequence
-	finalState  = states[-1]
+	# set the final step to the last in sequence
+	finalStep  = steps[-1]
 
-	# while the actual state is different from the final state
-	while actualState != finalState:
+	# while the actual step is different from the final step
+	while actualStep != finalStep:
 
 		# spacing
-		print "\n"
+		print
 
-		# get description of the state
-		stateDescription = game["levels"]["cave"]["states"][actualState]["stateDescription"]		
+		# get description of the step
+		stepDescription = game["levels"]["cave"]["steps"][actualStep]["stepDescription"]		
 
-		# get available actions in the state
-		availableActions = game["levels"]["cave"]["states"][actualState]["availableActions"]
+		# get available actions in the step
+		availableActions = game["levels"]["cave"]["steps"][actualStep]["availableActions"]
 
-		# vintage print state description
-		printSentence(STARTING_SEQUENCE+stateDescription, 
-					  pause = 0.03, 
-					  columns = 80)
+		# vintage print step description
+		printSentence(STARTING_SEQUENCE+stepDescription, 
+					  pause = VELOCITY[game["player"]["velocity"]], 
+					  columns = game["player"]["columns"])
 
 		# go on until needed
 		continueLooping = True
 		while continueLooping:
 
 			# spacing
-			print "\n"
+			print
 
 			# ask the player for the action
 			choice = raw_input(STARTING_SEQUENCE)
@@ -318,16 +347,16 @@ def playGame():
 			# if the typed choice is in the available actions set
 			if choice in availableActions.keys():
 
-				# if the action let Lara move forward to next state
-				if game["levels"]["cave"]["states"][actualState]["availableActions"][choice] != "": 
+				# if the action let Lara move forward to next step
+				if game["levels"]["cave"]["steps"][actualStep]["availableActions"][choice] != "": 
 
-					# update the actual state to the next state for the action and stop looping
-					actualState = game["levels"]["cave"]["states"][actualState]["availableActions"][choice]
+					# update the actual step to the next step for the action and stop looping
+					actualStep = game["levels"]["cave"]["steps"][actualStep]["availableActions"][choice]
 
 					# stop looping
 					continueLooping = False
 
-				# epsilon move in the actual state: print a random message from the action taken
+				# epsilon move in the actual step: print a random message from the action taken
 				else:
 
 					matchAction = False
@@ -365,11 +394,11 @@ def playGame():
 
 					# vintage print the action name
 					printSentence("- "+action.upper())
-					print "\n"
+					print
 
 					# vintage print the action manual
-					printSentence("\t"+game["actions"][action]["usageMessage"], CHAR_PAUSE, columns = COLUMNS_DIM-6)
-					print "\n"
+					printSentence("\t"+game["actions"][action]["usageMessage"], columns = COLUMNS_DIM-6)
+					print
 
 					# wait for input
 					raw_input("")
@@ -379,11 +408,11 @@ def playGame():
 
 				# vintage print the message
 				printSentence(game["defaultMessages"]["default"], 
-							  pause = 0, 
-							  columns = 80)
+							  pause = VELOCITY[game["player"]["velocity"]], 
+							  columns = game["player"]["columns"])
 
 createGame()
-#playGame()
+playGame()
 
 
 
