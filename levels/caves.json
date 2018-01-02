@@ -6,6 +6,9 @@
         "come": {
             "usageMessage": "The COME command lets Lara get off gently from high places. You won't be always able to come: Lara need something to come up/down to complete this action. Use the command COME [UP/DOWN] to . Note: if you type and execute COME, you will COME STRAIGHT by default."
         }, 
+        "cross": {
+            "usageMessage": "The CROSS command lets Lara cross something in the scene. You can cross in the scene using the command CROSS [PREP] [SOMETHING]."
+        }, 
         "examine": {
             "usageMessage": "The EXAMINE action is useful to help you explore the scene or a particular item in the scene. You can examine the scene using simply EXAMINE. If you try to examine an item you don't have in your pocket, the examine action will fail and nothing happens. You can examine an item using the command EXAMINE [ITEM_NAME] with the name of an item in the scene."
         }, 
@@ -20,6 +23,9 @@
         }, 
         "save": {
             "usageMessage": "The SAVE action is used to save the game. You can save the game only when you meet a SAVE DIAMOND in the scene, using the command SAVE."
+        }, 
+        "shot": {
+            "usageMessage": "The SHOT action is used to use guns against something or someone. You can shot something or someone using the command USE [ITEM_NAME] with the name of an item in the scene."
         }, 
         "use": {
             "usageMessage": "The USE action is used to use an item you hold. If you can't use the item in the scene than the item will remain in your pocket. You can use an item using the command USE [ITEM_NAME] with the name of an item in the scene."
@@ -36,6 +42,10 @@
         ], 
         "noCome": [
             "You can't do this now.", 
+            "It is not the right thing to do..."
+        ], 
+        "noCross": [
+            "There is nothing to cross is here", 
             "It is not the right thing to do..."
         ], 
         "noExamine": [
@@ -59,6 +69,10 @@
         "noSave": [
             "No diamond on the horizon..."
         ], 
+        "noShot": [
+            "It is not the right thing to do...", 
+            "You are shooting randomly"
+        ], 
         "noUse": [
             "It is not the right thing to do...", 
             "Maybe later", 
@@ -79,8 +93,11 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
+                        "examine footprints": "", 
                         "get": "", 
+                        "get footprints": "", 
                         "jump": "", 
                         "jump back": "", 
                         "jump left": "", 
@@ -91,8 +108,10 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "10", 
-                        "save": "", 
+                        "shot": "", 
+                        "shot footprints": "", 
                         "use": "", 
+                        "use footprints": "", 
                         "walk": "10", 
                         "walk back": "", 
                         "walk left": "", 
@@ -102,7 +121,10 @@
                     "availableItems": [
                         "footprints"
                     ], 
-                    "stepDescription": "Footprints"
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "There are some footprints coming from the North"
                 }, 
                 "10": {
                     "availableActions": {
@@ -110,6 +132,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -122,7 +145,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "20", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "20", 
                         "walk back": "", 
@@ -130,10 +153,11 @@
                         "walk right": "", 
                         "walk straight": "20"
                     }, 
-                    "availableItems": [
-                        "footprints"
-                    ], 
-                    "stepDescription": "Run ahead to where the footprints come from"
+                    "availableItems": [], 
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "There is a sort of corridor between the walls in front of you"
                 }, 
                 "20": {
                     "availableActions": {
@@ -141,8 +165,11 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
+                        "examine slots": "", 
                         "get": "", 
+                        "get slots": "", 
                         "jump": "", 
                         "jump back": "", 
                         "jump left": "", 
@@ -153,8 +180,10 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "30", 
-                        "save": "", 
+                        "shot": "", 
+                        "shot slots": "", 
                         "use": "", 
+                        "use slots": "", 
                         "walk": "30", 
                         "walk back": "", 
                         "walk left": "", 
@@ -164,7 +193,10 @@
                     "availableItems": [
                         "slots"
                     ], 
-                    "stepDescription": "You will soon come to a part with slots in the wall"
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "Some part of the walls are covered with slots"
                 }, 
                 "30": {
                     "availableActions": {
@@ -172,8 +204,11 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
+                        "examine key": "", 
                         "get": "", 
+                        "get key": "", 
                         "jump": "", 
                         "jump back": "", 
                         "jump left": "", 
@@ -184,16 +219,23 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "40", 
-                        "save": "", 
+                        "shot": "", 
+                        "shot key": "", 
                         "use": "", 
+                        "use key": "", 
                         "walk": "40", 
                         "walk back": "", 
                         "walk left": "", 
                         "walk right": "", 
                         "walk straight": "40"
                     }, 
-                    "availableItems": [], 
-                    "stepDescription": "These are dart emitters"
+                    "availableItems": [
+                        "key"
+                    ], 
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "They looks like some holes"
                 }, 
                 "40": {
                     "availableActions": {
@@ -201,8 +243,11 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
+                        "examine slots": "", 
                         "get": "", 
+                        "get slots": "", 
                         "jump": "", 
                         "jump back": "", 
                         "jump left": "", 
@@ -213,16 +258,23 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "50", 
-                        "save": "", 
+                        "shot": "", 
+                        "shot slots": "", 
                         "use": "", 
+                        "use slots": "", 
                         "walk": "50", 
                         "walk back": "", 
                         "walk left": "", 
                         "walk right": "", 
                         "walk straight": "50"
                     }, 
-                    "availableItems": [], 
-                    "stepDescription": "Run quickly past and try not to get hit"
+                    "availableItems": [
+                        "slots"
+                    ], 
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "The slots are dart emitters: you can't pass without be hurted"
                 }, 
                 "50": {
                     "availableActions": {
@@ -230,6 +282,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -242,7 +295,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "60", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "60", 
                         "walk back": "", 
@@ -251,7 +304,10 @@
                         "walk straight": "60"
                     }, 
                     "availableItems": [], 
-                    "stepDescription": "Follow the path to the right"
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "The walls begin to blow arrows that pierce you [run and jump]!"
                 }, 
                 "60": {
                     "availableActions": {
@@ -259,6 +315,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -271,7 +328,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "70", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "70", 
                         "walk back": "", 
@@ -279,10 +336,11 @@
                         "walk right": "", 
                         "walk straight": "70"
                     }, 
-                    "availableItems": [
-                        "footprints"
-                    ], 
-                    "stepDescription": "There you can see the footprints coming down from the left"
+                    "availableItems": [], 
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "The cave is enormous and it seems infinite"
                 }, 
                 "70": {
                     "availableActions": {
@@ -290,6 +348,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -302,7 +361,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "80", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "80", 
                         "walk back": "", 
@@ -310,10 +369,11 @@
                         "walk right": "", 
                         "walk straight": "80"
                     }, 
-                    "availableItems": [
-                        "secret"
-                    ], 
-                    "stepDescription": "Secret 1"
+                    "availableItems": [], 
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "There is a path to the right"
                 }, 
                 "80": {
                     "availableActions": {
@@ -321,8 +381,11 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
+                        "examine footprints": "", 
                         "get": "", 
+                        "get footprints": "", 
                         "jump": "", 
                         "jump back": "", 
                         "jump left": "", 
@@ -333,16 +396,23 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "90", 
-                        "save": "", 
+                        "shot": "", 
+                        "shot footprints": "", 
                         "use": "", 
+                        "use footprints": "", 
                         "walk": "90", 
                         "walk back": "", 
                         "walk left": "", 
                         "walk right": "", 
                         "walk straight": "90"
                     }, 
-                    "availableItems": [], 
-                    "stepDescription": "Do not turn left yet, but run into the cave ahead"
+                    "availableItems": [
+                        "footprints"
+                    ], 
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "The footprints are visible again [dots] they are coming down from the left"
                 }, 
                 "90": {
                     "availableActions": {
@@ -350,6 +420,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -362,7 +433,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "100", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "100", 
                         "walk back": "", 
@@ -371,7 +442,10 @@
                         "walk straight": "100"
                     }, 
                     "availableItems": [], 
-                    "stepDescription": "In the left corner is a sloped block"
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "There's nothing interesting here"
                 }, 
                 "100": {
                     "availableActions": {
@@ -379,6 +453,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -391,7 +466,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "110", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "110", 
                         "walk back": "", 
@@ -400,7 +475,10 @@
                         "walk straight": "110"
                     }, 
                     "availableItems": [], 
-                    "stepDescription": "Stand on the back of it"
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "You are into the cave ahead"
                 }, 
                 "110": {
                     "availableActions": {
@@ -408,6 +486,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -420,7 +499,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "120", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "120", 
                         "walk back": "", 
@@ -429,7 +508,10 @@
                         "walk straight": "120"
                     }, 
                     "availableItems": [], 
-                    "stepDescription": "Jump up, hold on to the ledge and pull up"
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "In the left corner there is a sloped block"
                 }, 
                 "120": {
                     "availableActions": {
@@ -437,6 +519,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -449,7 +532,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "130", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "130", 
                         "walk back": "", 
@@ -458,7 +541,10 @@
                         "walk straight": "130"
                     }, 
                     "availableItems": [], 
-                    "stepDescription": "While sliding jump, press forward and grab the ledge"
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "[thinking] I could jump up and grab the ledge to climb into the niche"
                 }, 
                 "130": {
                     "availableActions": {
@@ -466,6 +552,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -478,7 +565,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "140", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "140", 
                         "walk back": "", 
@@ -487,7 +574,10 @@
                         "walk straight": "140"
                     }, 
                     "availableItems": [], 
-                    "stepDescription": "Climb into the niche"
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "You are on the block"
                 }, 
                 "140": {
                     "availableActions": {
@@ -495,6 +585,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -507,7 +598,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "150", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "150", 
                         "walk back": "", 
@@ -515,10 +606,11 @@
                         "walk right": "", 
                         "walk straight": "150"
                     }, 
-                    "availableItems": [
-                        "secret"
-                    ], 
-                    "stepDescription": "You will hear a sound indication that you've found the first secret"
+                    "availableItems": [], 
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "You are into the niche"
                 }, 
                 "150": {
                     "availableActions": {
@@ -526,8 +618,13 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
+                        "examine key": "", 
+                        "examine secret": "", 
                         "get": "", 
+                        "get key": "", 
+                        "get secret": "", 
                         "jump": "", 
                         "jump back": "", 
                         "jump left": "", 
@@ -538,16 +635,26 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "160", 
-                        "save": "", 
+                        "shot": "", 
+                        "shot key": "", 
+                        "shot secret": "", 
                         "use": "", 
+                        "use key": "", 
+                        "use secret": "", 
                         "walk": "160", 
                         "walk back": "", 
                         "walk left": "", 
                         "walk right": "", 
                         "walk straight": "160"
                     }, 
-                    "availableItems": [], 
-                    "stepDescription": "Collect it"
+                    "availableItems": [
+                        "key", 
+                        "secret"
+                    ], 
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "It seems like a secret room"
                 }, 
                 "160": {
                     "availableActions": {
@@ -555,6 +662,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -567,7 +675,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "170", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "170", 
                         "walk back": "", 
@@ -575,10 +683,11 @@
                         "walk right": "", 
                         "walk straight": "170"
                     }, 
-                    "availableItems": [
-                        "small medipack"
-                    ], 
-                    "stepDescription": "It's a small medipack"
+                    "availableItems": [], 
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "There is something on the floor"
                 }, 
                 "170": {
                     "availableActions": {
@@ -586,8 +695,11 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
+                        "examine small medipack": "", 
                         "get": "", 
+                        "get small medipack": "", 
                         "jump": "", 
                         "jump back": "", 
                         "jump left": "", 
@@ -598,8 +710,10 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "180", 
-                        "save": "", 
+                        "shot": "", 
+                        "shot small medipack": "", 
                         "use": "", 
+                        "use small medipack": "", 
                         "walk": "180", 
                         "walk back": "", 
                         "walk left": "", 
@@ -607,9 +721,12 @@
                         "walk straight": "180"
                     }, 
                     "availableItems": [
-                        "wolf"
+                        "small medipack"
                     ], 
-                    "stepDescription": "Leave the chamber again and backtrack to the place where the wolf tracks went upwards"
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "It's a small medipack"
                 }, 
                 "180": {
                     "availableActions": {
@@ -617,6 +734,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -629,7 +747,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "190", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "190", 
                         "walk back": "", 
@@ -638,7 +756,10 @@
                         "walk straight": "190"
                     }, 
                     "availableItems": [], 
-                    "stepDescription": "Climb up the rocks"
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "There's nothing interesting here"
                 }, 
                 "190": {
                     "availableActions": {
@@ -646,6 +767,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -658,7 +780,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "200", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "200", 
                         "walk back": "", 
@@ -667,7 +789,10 @@
                         "walk straight": "200"
                     }, 
                     "availableItems": [], 
-                    "stepDescription": "At the crossing, three bats will attack you"
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "[thinking] I could leave the chamber and follow the wolf tracks"
                 }, 
                 "200": {
                     "availableActions": {
@@ -675,6 +800,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -687,7 +813,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "210", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "210", 
                         "walk back": "", 
@@ -696,7 +822,10 @@
                         "walk straight": "210"
                     }, 
                     "availableItems": [], 
-                    "stepDescription": "Shoot them"
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "You are on some rocks"
                 }, 
                 "210": {
                     "availableActions": {
@@ -704,6 +833,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -716,7 +846,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "220", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "220", 
                         "walk back": "", 
@@ -724,10 +854,11 @@
                         "walk right": "", 
                         "walk straight": "220"
                     }, 
-                    "availableItems": [
-                        "secret"
-                    ], 
-                    "stepDescription": "Secret 2"
+                    "availableItems": [], 
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "There are some noises"
                 }, 
                 "220": {
                     "availableActions": {
@@ -735,6 +866,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -747,7 +879,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "230", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "230", 
                         "walk back": "", 
@@ -756,7 +888,10 @@
                         "walk straight": "230"
                     }, 
                     "availableItems": [], 
-                    "stepDescription": "Run into the left part of the cave"
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "Three bats are attacking you!"
                 }, 
                 "230": {
                     "availableActions": {
@@ -764,6 +899,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -776,7 +912,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "240", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "240", 
                         "walk back": "", 
@@ -785,7 +921,10 @@
                         "walk straight": "240"
                     }, 
                     "availableItems": [], 
-                    "stepDescription": "In the right corner is a snow-covered part of the wall on the left"
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "Bats are death"
                 }, 
                 "240": {
                     "availableActions": {
@@ -793,6 +932,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -805,7 +945,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "250", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "250", 
                         "walk back": "", 
@@ -813,10 +953,11 @@
                         "walk right": "", 
                         "walk straight": "250"
                     }, 
-                    "availableItems": [
-                        "lever"
-                    ], 
-                    "stepDescription": "This is where you can climb up to a higher level"
+                    "availableItems": [], 
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "The left part of the cave is unexplored yet"
                 }, 
                 "250": {
                     "availableActions": {
@@ -824,6 +965,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -836,7 +978,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "260", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "260", 
                         "walk back": "", 
@@ -845,7 +987,10 @@
                         "walk straight": "260"
                     }, 
                     "availableItems": [], 
-                    "stepDescription": "Press up and action to do so"
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "In the right corner there is a snow-covered part of the wall"
                 }, 
                 "260": {
                     "availableActions": {
@@ -853,6 +998,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -865,7 +1011,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "270", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "270", 
                         "walk back": "", 
@@ -874,7 +1020,10 @@
                         "walk straight": "270"
                     }, 
                     "availableItems": [], 
-                    "stepDescription": "Shoot a bat"
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "There is a bat!"
                 }, 
                 "270": {
                     "availableActions": {
@@ -882,6 +1031,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -894,7 +1044,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "280", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "280", 
                         "walk back": "", 
@@ -902,10 +1052,11 @@
                         "walk right": "", 
                         "walk straight": "280"
                     }, 
-                    "availableItems": [
-                        "small medipack"
-                    ], 
-                    "stepDescription": "Then collect the next small medipack"
+                    "availableItems": [], 
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "The bat is attacking you!"
                 }, 
                 "280": {
                     "availableActions": {
@@ -913,6 +1064,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -925,7 +1077,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "290", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "290", 
                         "walk back": "", 
@@ -934,7 +1086,10 @@
                         "walk straight": "290"
                     }, 
                     "availableItems": [], 
-                    "stepDescription": "Climb back down and return to the crossing"
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "Bat is death"
                 }, 
                 "290": {
                     "availableActions": {
@@ -942,8 +1097,11 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
+                        "examine small medipack": "", 
                         "get": "", 
+                        "get small medipack": "", 
                         "jump": "", 
                         "jump back": "", 
                         "jump left": "", 
@@ -954,16 +1112,23 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "300", 
-                        "save": "", 
+                        "shot": "", 
+                        "shot small medipack": "", 
                         "use": "", 
+                        "use small medipack": "", 
                         "walk": "300", 
                         "walk back": "", 
                         "walk left": "", 
                         "walk right": "", 
                         "walk straight": "300"
                     }, 
-                    "availableItems": [], 
-                    "stepDescription": "Run into the back of the cave"
+                    "availableItems": [
+                        "small medipack"
+                    ], 
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "There is a small medipack on the floor"
                 }, 
                 "300": {
                     "availableActions": {
@@ -971,6 +1136,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -983,7 +1149,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "310", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "310", 
                         "walk back": "", 
@@ -992,7 +1158,10 @@
                         "walk straight": "310"
                     }, 
                     "availableItems": [], 
-                    "stepDescription": "There is a path leading out and down to the left"
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "There is nothing more here"
                 }, 
                 "310": {
                     "availableActions": {
@@ -1000,6 +1169,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -1012,7 +1182,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "320", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "320", 
                         "walk back": "", 
@@ -1021,7 +1191,10 @@
                         "walk straight": "320"
                     }, 
                     "availableItems": [], 
-                    "stepDescription": "Follow it"
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "Run into the back of the cave"
                 }, 
                 "320": {
                     "availableActions": {
@@ -1029,6 +1202,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -1041,7 +1215,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "330", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "330", 
                         "walk back": "", 
@@ -1050,7 +1224,10 @@
                         "walk straight": "330"
                     }, 
                     "availableItems": [], 
-                    "stepDescription": "Lower Part of Cave"
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "There is a path leading out and down to the left"
                 }, 
                 "330": {
                     "availableActions": {
@@ -1058,6 +1235,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -1070,7 +1248,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "340", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "340", 
                         "walk back": "", 
@@ -1079,7 +1257,10 @@
                         "walk straight": "340"
                     }, 
                     "availableItems": [], 
-                    "stepDescription": "Climb down the hill"
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "[thinking] I could follow the path and climb down the hill"
                 }, 
                 "340": {
                     "availableActions": {
@@ -1087,6 +1268,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -1099,7 +1281,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "350", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "350", 
                         "walk back": "", 
@@ -1108,7 +1290,10 @@
                         "walk straight": "350"
                     }, 
                     "availableItems": [], 
-                    "stepDescription": "Drop into the pit in the greenery and run down the stairs"
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "There are some stairs [run down the stairs]"
                 }, 
                 "350": {
                     "availableActions": {
@@ -1116,8 +1301,11 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
+                        "examine lever": "", 
                         "get": "", 
+                        "get lever": "", 
                         "jump": "", 
                         "jump back": "", 
                         "jump left": "", 
@@ -1128,8 +1316,10 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "360", 
-                        "save": "", 
+                        "shot": "", 
+                        "shot lever": "", 
                         "use": "", 
+                        "use lever": "", 
                         "walk": "360", 
                         "walk back": "", 
                         "walk left": "", 
@@ -1139,7 +1329,10 @@
                     "availableItems": [
                         "lever"
                     ], 
-                    "stepDescription": "There you'll find a door with a lever on the right"
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "A door with a lever on the right is in front of you [use the lever to open the door]"
                 }, 
                 "360": {
                     "availableActions": {
@@ -1147,6 +1340,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -1159,7 +1353,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "370", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "370", 
                         "walk back": "", 
@@ -1167,10 +1361,11 @@
                         "walk right": "", 
                         "walk straight": "370"
                     }, 
-                    "availableItems": [
-                        "lever"
-                    ], 
-                    "stepDescription": "Use the lever to open the door"
+                    "availableItems": [], 
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "You are now in a new chamber"
                 }, 
                 "370": {
                     "availableActions": {
@@ -1178,6 +1373,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -1190,7 +1386,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "380", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "380", 
                         "walk back": "", 
@@ -1199,7 +1395,10 @@
                         "walk straight": "380"
                     }, 
                     "availableItems": [], 
-                    "stepDescription": "Enter the next chamber and shoot a bat"
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "There is a bat!"
                 }, 
                 "380": {
                     "availableActions": {
@@ -1207,6 +1406,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -1219,7 +1419,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "390", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "390", 
                         "walk back": "", 
@@ -1227,10 +1427,11 @@
                         "walk right": "", 
                         "walk straight": "390"
                     }, 
-                    "availableItems": [
-                        "slots"
-                    ], 
-                    "stepDescription": "(On the right is a wooden gate, behind it you can see a trench on both sides lined with dart slots"
+                    "availableItems": [], 
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "The bat is attacking you!"
                 }, 
                 "390": {
                     "availableActions": {
@@ -1238,6 +1439,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -1250,7 +1452,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "400", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "400", 
                         "walk back": "", 
@@ -1258,10 +1460,11 @@
                         "walk right": "", 
                         "walk straight": "400"
                     }, 
-                    "availableItems": [
-                        "lever"
-                    ], 
-                    "stepDescription": ") Run into the left corner and climb up onto the next level"
+                    "availableItems": [], 
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "There is another path"
                 }, 
                 "400": {
                     "availableActions": {
@@ -1269,6 +1472,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -1281,7 +1485,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "410", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "410", 
                         "walk back": "", 
@@ -1290,7 +1494,10 @@
                         "walk straight": "410"
                     }, 
                     "availableItems": [], 
-                    "stepDescription": "Follow the path till you come to a part of the cave with two bridges"
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "You are in a part of the cave with two bridges"
                 }, 
                 "410": {
                     "availableActions": {
@@ -1298,6 +1505,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -1310,7 +1518,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "420", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "420", 
                         "walk back": "", 
@@ -1318,11 +1526,11 @@
                         "walk right": "", 
                         "walk straight": "420"
                     }, 
-                    "availableItems": [
-                        "wolf", 
-                        "wolves"
-                    ], 
-                    "stepDescription": "Draw weapons and shoot the two wolves running around down there"
+                    "availableItems": [], 
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "There are two wolves running around but can't attack you"
                 }, 
                 "420": {
                     "availableActions": {
@@ -1330,6 +1538,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -1342,7 +1551,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "430", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "430", 
                         "walk back": "", 
@@ -1351,6 +1560,9 @@
                         "walk straight": "430"
                     }, 
                     "availableItems": [], 
+                    "consequences": {
+                        "life": 0
+                    }, 
                     "stepDescription": "Now run along to the right"
                 }, 
                 "430": {
@@ -1359,6 +1571,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -1371,7 +1584,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "440", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "440", 
                         "walk back": "", 
@@ -1379,10 +1592,11 @@
                         "walk right": "", 
                         "walk straight": "440"
                     }, 
-                    "availableItems": [
-                        "small medipack"
-                    ], 
-                    "stepDescription": "(If you want to you can jump to the ground now and collect a small medipack, but we will come to that later"
+                    "availableItems": [], 
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "There is a bridge: you can cross it"
                 }, 
                 "440": {
                     "availableActions": {
@@ -1390,6 +1604,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -1402,7 +1617,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "450", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "450", 
                         "walk back": "", 
@@ -1411,7 +1626,10 @@
                         "walk straight": "450"
                     }, 
                     "availableItems": [], 
-                    "stepDescription": ") Cross the first bridge"
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "There is a pillar"
                 }, 
                 "450": {
                     "availableActions": {
@@ -1419,6 +1637,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -1431,7 +1650,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "460", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "460", 
                         "walk back": "", 
@@ -1440,7 +1659,10 @@
                         "walk straight": "460"
                     }, 
                     "availableItems": [], 
-                    "stepDescription": "Run around the pillar and cross the second bridge"
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "There is a second bridge"
                 }, 
                 "460": {
                     "availableActions": {
@@ -1448,6 +1670,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -1460,7 +1683,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "470", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "470", 
                         "walk back": "", 
@@ -1469,7 +1692,10 @@
                         "walk straight": "470"
                     }, 
                     "availableItems": [], 
-                    "stepDescription": "On the other side, turn left and enter the next room"
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "There is another room on the left"
                 }, 
                 "470": {
                     "availableActions": {
@@ -1477,6 +1703,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -1489,7 +1716,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "480", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "480", 
                         "walk back": "", 
@@ -1497,12 +1724,11 @@
                         "walk right": "", 
                         "walk straight": "480"
                     }, 
-                    "availableItems": [
-                        "wolf", 
-                        "wolves", 
-                        "bear"
-                    ], 
-                    "stepDescription": "Bear and Wolves"
+                    "availableItems": [], 
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "There is a gap on the right: in the chamber underneath a bear is hiding"
                 }, 
                 "480": {
                     "availableActions": {
@@ -1510,6 +1736,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -1522,7 +1749,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "490", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "490", 
                         "walk back": "", 
@@ -1531,7 +1758,10 @@
                         "walk straight": "490"
                     }, 
                     "availableItems": [], 
-                    "stepDescription": "Advance towards the gap on the right"
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "There is a save crystal on the opposite side"
                 }, 
                 "490": {
                     "availableActions": {
@@ -1539,6 +1769,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -1551,7 +1782,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "500", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "500", 
                         "walk back": "", 
@@ -1559,10 +1790,11 @@
                         "walk right": "", 
                         "walk straight": "500"
                     }, 
-                    "availableItems": [
-                        "bear"
-                    ], 
-                    "stepDescription": "In the chamber underneath is a bear hiding"
+                    "availableItems": [], 
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "Kill the bear in the pit underneath"
                 }, 
                 "500": {
                     "availableActions": {
@@ -1570,6 +1802,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -1582,7 +1815,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "510", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "510", 
                         "walk back": "", 
@@ -1591,7 +1824,10 @@
                         "walk straight": "510"
                     }, 
                     "availableItems": [], 
-                    "stepDescription": "(PlayStation users might want to save at the crystal on the opposite side, before going for the goodies"
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "Kill the bear from above"
                 }, 
                 "510": {
                     "availableActions": {
@@ -1599,6 +1835,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -1611,7 +1848,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "520", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "520", 
                         "walk back": "", 
@@ -1620,7 +1857,10 @@
                         "walk straight": "520"
                     }, 
                     "availableItems": [], 
-                    "stepDescription": ")"
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "It tries to hide"
                 }, 
                 "520": {
                     "availableActions": {
@@ -1628,6 +1868,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -1640,7 +1881,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "530", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "530", 
                         "walk back": "", 
@@ -1649,7 +1890,10 @@
                         "walk straight": "530"
                     }, 
                     "availableItems": [], 
-                    "stepDescription": "Goodies"
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "Then drop down"
                 }, 
                 "530": {
                     "availableActions": {
@@ -1657,6 +1901,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -1669,7 +1914,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "540", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "540", 
                         "walk back": "", 
@@ -1677,10 +1922,11 @@
                         "walk right": "", 
                         "walk straight": "540"
                     }, 
-                    "availableItems": [
-                        "bear"
-                    ], 
-                    "stepDescription": "Kill the bear in the pit underneath"
+                    "availableItems": [], 
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "Enter the next room and shoot two bats"
                 }, 
                 "540": {
                     "availableActions": {
@@ -1688,6 +1934,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -1700,7 +1947,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "550", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "550", 
                         "walk back": "", 
@@ -1709,7 +1956,10 @@
                         "walk straight": "550"
                     }, 
                     "availableItems": [], 
-                    "stepDescription": "(It's possible that you will not be able to kill him from above, as he tries to hide"
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "Run towards the strange looking platform on the floor"
                 }, 
                 "550": {
                     "availableActions": {
@@ -1717,6 +1967,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -1729,7 +1980,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "560", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "560", 
                         "walk back": "", 
@@ -1738,7 +1989,10 @@
                         "walk straight": "560"
                     }, 
                     "availableItems": [], 
-                    "stepDescription": ") Then drop down"
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "This is a trigger for the door"
                 }, 
                 "560": {
                     "availableActions": {
@@ -1746,8 +2000,11 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
+                        "examine small medipack": "", 
                         "get": "", 
+                        "get small medipack": "", 
                         "jump": "", 
                         "jump back": "", 
                         "jump left": "", 
@@ -1758,16 +2015,23 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "570", 
-                        "save": "", 
+                        "shot": "", 
+                        "shot small medipack": "", 
                         "use": "", 
+                        "use small medipack": "", 
                         "walk": "570", 
                         "walk back": "", 
                         "walk left": "", 
                         "walk right": "", 
                         "walk straight": "570"
                     }, 
-                    "availableItems": [], 
-                    "stepDescription": "Enter the next room and shoot two bats"
+                    "availableItems": [
+                        "small medipack"
+                    ], 
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "Pick up the small medipack"
                 }, 
                 "570": {
                     "availableActions": {
@@ -1775,8 +2039,11 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
+                        "examine key": "", 
                         "get": "", 
+                        "get key": "", 
                         "jump": "", 
                         "jump back": "", 
                         "jump left": "", 
@@ -1787,16 +2054,23 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "580", 
-                        "save": "", 
+                        "shot": "", 
+                        "shot key": "", 
                         "use": "", 
+                        "use key": "", 
                         "walk": "580", 
                         "walk back": "", 
                         "walk left": "", 
                         "walk right": "", 
                         "walk straight": "580"
                     }, 
-                    "availableItems": [], 
-                    "stepDescription": "Run towards the strange looking platform on the floor"
+                    "availableItems": [
+                        "key"
+                    ], 
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "Then step onto the marked platform to open the door"
                 }, 
                 "580": {
                     "availableActions": {
@@ -1804,6 +2078,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -1816,7 +2091,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "590", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "590", 
                         "walk back": "", 
@@ -1825,7 +2100,10 @@
                         "walk straight": "590"
                     }, 
                     "availableItems": [], 
-                    "stepDescription": "This is a trigger for the door"
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "It's a timed door so you have to be quick"
                 }, 
                 "590": {
                     "availableActions": {
@@ -1833,6 +2111,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -1845,7 +2124,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "600", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "600", 
                         "walk back": "", 
@@ -1853,10 +2132,11 @@
                         "walk right": "", 
                         "walk straight": "600"
                     }, 
-                    "availableItems": [
-                        "small medipack"
-                    ], 
-                    "stepDescription": "Pick up the small medipack"
+                    "availableItems": [], 
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "Run through"
                 }, 
                 "600": {
                     "availableActions": {
@@ -1864,6 +2144,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -1876,7 +2157,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "610", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "610", 
                         "walk back": "", 
@@ -1884,10 +2165,11 @@
                         "walk right": "", 
                         "walk straight": "610"
                     }, 
-                    "availableItems": [
-                        "key"
-                    ], 
-                    "stepDescription": "Then step onto the marked platform to open the door"
+                    "availableItems": [], 
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "You'll end up in the cave with the bridges again"
                 }, 
                 "610": {
                     "availableActions": {
@@ -1895,6 +2177,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -1907,7 +2190,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "620", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "620", 
                         "walk back": "", 
@@ -1916,7 +2199,10 @@
                         "walk straight": "620"
                     }, 
                     "availableItems": [], 
-                    "stepDescription": "(It's a timed door so you have to be quick"
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "Turn right and run into the open"
                 }, 
                 "620": {
                     "availableActions": {
@@ -1924,8 +2210,11 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
+                        "examine key": "", 
                         "get": "", 
+                        "get key": "", 
                         "jump": "", 
                         "jump back": "", 
                         "jump left": "", 
@@ -1936,16 +2225,23 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "630", 
-                        "save": "", 
+                        "shot": "", 
+                        "shot key": "", 
                         "use": "", 
+                        "use key": "", 
                         "walk": "630", 
                         "walk back": "", 
                         "walk left": "", 
                         "walk right": "", 
                         "walk straight": "630"
                     }, 
-                    "availableItems": [], 
-                    "stepDescription": ") Run through"
+                    "availableItems": [
+                        "key"
+                    ], 
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "Run towards the skeleton statue on the right"
                 }, 
                 "630": {
                     "availableActions": {
@@ -1953,6 +2249,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -1965,7 +2262,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "640", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "640", 
                         "walk back": "", 
@@ -1974,7 +2271,10 @@
                         "walk straight": "640"
                     }, 
                     "availableItems": [], 
-                    "stepDescription": "You'll end up in the cave with the bridges again"
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "There you can climb up"
                 }, 
                 "640": {
                     "availableActions": {
@@ -1982,6 +2282,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -1994,7 +2295,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "650", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "650", 
                         "walk back": "", 
@@ -2003,7 +2304,10 @@
                         "walk straight": "650"
                     }, 
                     "availableItems": [], 
-                    "stepDescription": "Turn right and run into the open"
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "You can also pull yourself up onto the second bridge"
                 }, 
                 "650": {
                     "availableActions": {
@@ -2011,6 +2315,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -2023,7 +2328,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "660", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "660", 
                         "walk back": "", 
@@ -2031,10 +2336,11 @@
                         "walk right": "", 
                         "walk straight": "660"
                     }, 
-                    "availableItems": [
-                        "key"
-                    ], 
-                    "stepDescription": "Run towards the skeleton statue on the right"
+                    "availableItems": [], 
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "Run over the bridge again and jump over the pit where the bear was"
                 }, 
                 "660": {
                     "availableActions": {
@@ -2042,6 +2348,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -2054,7 +2361,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "670", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "670", 
                         "walk back": "", 
@@ -2063,7 +2370,10 @@
                         "walk straight": "670"
                     }, 
                     "availableItems": [], 
-                    "stepDescription": "There you can climb up"
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "There is a save crystal on the opposite side"
                 }, 
                 "670": {
                     "availableActions": {
@@ -2071,8 +2381,11 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
+                        "examine small medipack": "", 
                         "get": "", 
+                        "get small medipack": "", 
                         "jump": "", 
                         "jump back": "", 
                         "jump left": "", 
@@ -2083,16 +2396,23 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "680", 
-                        "save": "", 
+                        "shot": "", 
+                        "shot small medipack": "", 
                         "use": "", 
+                        "use small medipack": "", 
                         "walk": "680", 
                         "walk back": "", 
                         "walk left": "", 
                         "walk right": "", 
                         "walk straight": "680"
                     }, 
-                    "availableItems": [], 
-                    "stepDescription": "You can also pull yourself up onto the second bridge"
+                    "availableItems": [
+                        "small medipack"
+                    ], 
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "Before you run down the stairs run behind the pillars on the left and collect a small medipack"
                 }, 
                 "680": {
                     "availableActions": {
@@ -2100,6 +2420,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -2112,7 +2433,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "690", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "690", 
                         "walk back": "", 
@@ -2121,7 +2442,10 @@
                         "walk straight": "690"
                     }, 
                     "availableItems": [], 
-                    "stepDescription": "- Picture"
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "Then run down the stairs"
                 }, 
                 "690": {
                     "availableActions": {
@@ -2129,6 +2453,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -2141,7 +2466,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "700", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "700", 
                         "walk back": "", 
@@ -2149,10 +2474,11 @@
                         "walk right": "", 
                         "walk straight": "700"
                     }, 
-                    "availableItems": [
-                        "bear"
-                    ], 
-                    "stepDescription": "Run over the bridge again and jump over the pit where the bear was"
+                    "availableItems": [], 
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "Draw weapons and shoot the two wolves coming up the stairs"
                 }, 
                 "700": {
                     "availableActions": {
@@ -2160,8 +2486,11 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
+                        "examine small medipack": "", 
                         "get": "", 
+                        "get small medipack": "", 
                         "jump": "", 
                         "jump back": "", 
                         "jump left": "", 
@@ -2172,16 +2501,23 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "710", 
-                        "save": "", 
+                        "shot": "", 
+                        "shot small medipack": "", 
                         "use": "", 
+                        "use small medipack": "", 
                         "walk": "710", 
                         "walk back": "", 
                         "walk left": "", 
                         "walk right": "", 
                         "walk straight": "710"
                     }, 
-                    "availableItems": [], 
-                    "stepDescription": "Here the PlayStation users can save their game at the save crystal"
+                    "availableItems": [
+                        "small medipack"
+                    ], 
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "Run down and collect the small medipack lying underneath the stairs"
                 }, 
                 "710": {
                     "availableActions": {
@@ -2189,6 +2525,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -2201,7 +2538,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "720", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "720", 
                         "walk back": "", 
@@ -2209,10 +2546,11 @@
                         "walk right": "", 
                         "walk straight": "720"
                     }, 
-                    "availableItems": [
-                        "small medipack"
-                    ], 
-                    "stepDescription": "Before you run down the stairs run behind the pillars on the left and collect a small medipack"
+                    "availableItems": [], 
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "Climb onto the platform in front of the closed gate"
                 }, 
                 "720": {
                     "availableActions": {
@@ -2220,6 +2558,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -2232,7 +2571,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "730", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "730", 
                         "walk back": "", 
@@ -2241,7 +2580,10 @@
                         "walk straight": "730"
                     }, 
                     "availableItems": [], 
-                    "stepDescription": "Then run down the stairs"
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "Go towards the left end"
                 }, 
                 "730": {
                     "availableActions": {
@@ -2249,8 +2591,11 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
+                        "examine key": "", 
                         "get": "", 
+                        "get key": "", 
                         "jump": "", 
                         "jump back": "", 
                         "jump left": "", 
@@ -2261,8 +2606,10 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "740", 
-                        "save": "", 
+                        "shot": "", 
+                        "shot key": "", 
                         "use": "", 
+                        "use key": "", 
                         "walk": "740", 
                         "walk back": "", 
                         "walk left": "", 
@@ -2270,10 +2617,12 @@
                         "walk straight": "740"
                     }, 
                     "availableItems": [
-                        "wolf", 
-                        "wolves"
+                        "key"
                     ], 
-                    "stepDescription": "Draw weapons and shoot the two wolves coming up the stairs"
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "Make a running jump towards the green platform"
                 }, 
                 "740": {
                     "availableActions": {
@@ -2281,6 +2630,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -2293,7 +2643,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "750", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "750", 
                         "walk back": "", 
@@ -2302,7 +2652,10 @@
                         "walk straight": "750"
                     }, 
                     "availableItems": [], 
-                    "stepDescription": "Timed Door"
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "Enter the chamber"
                 }, 
                 "750": {
                     "availableActions": {
@@ -2310,8 +2663,11 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
+                        "examine large medipack": "", 
                         "get": "", 
+                        "get large medipack": "", 
                         "jump": "", 
                         "jump back": "", 
                         "jump left": "", 
@@ -2322,8 +2678,10 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "760", 
-                        "save": "", 
+                        "shot": "", 
+                        "shot large medipack": "", 
                         "use": "", 
+                        "use large medipack": "", 
                         "walk": "760", 
                         "walk back": "", 
                         "walk left": "", 
@@ -2331,9 +2689,12 @@
                         "walk straight": "760"
                     }, 
                     "availableItems": [
-                        "small medipack"
+                        "large medipack"
                     ], 
-                    "stepDescription": "Run down and collect the small medipack lying underneath the stairs"
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "Pick up the large medipack"
                 }, 
                 "760": {
                     "availableActions": {
@@ -2341,6 +2702,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -2353,7 +2715,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "770", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "770", 
                         "walk back": "", 
@@ -2361,10 +2723,11 @@
                         "walk right": "", 
                         "walk straight": "770"
                     }, 
-                    "availableItems": [
-                        "secret"
-                    ], 
-                    "stepDescription": "Secret 3"
+                    "availableItems": [], 
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "Climb out again"
                 }, 
                 "770": {
                     "availableActions": {
@@ -2372,8 +2735,11 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
+                        "examine lever": "", 
                         "get": "", 
+                        "get lever": "", 
                         "jump": "", 
                         "jump back": "", 
                         "jump left": "", 
@@ -2384,16 +2750,23 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "780", 
-                        "save": "", 
+                        "shot": "", 
+                        "shot lever": "", 
                         "use": "", 
+                        "use lever": "", 
                         "walk": "780", 
                         "walk back": "", 
                         "walk left": "", 
                         "walk right": "", 
                         "walk straight": "780"
                     }, 
-                    "availableItems": [], 
-                    "stepDescription": "Climb onto the platform in front of the closed gate"
+                    "availableItems": [
+                        "lever"
+                    ], 
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "Climb up onto the platform with the lever"
                 }, 
                 "780": {
                     "availableActions": {
@@ -2401,6 +2774,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -2413,7 +2787,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "790", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "790", 
                         "walk back": "", 
@@ -2422,7 +2796,10 @@
                         "walk straight": "790"
                     }, 
                     "availableItems": [], 
-                    "stepDescription": "Go towards the left end"
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "Use it"
                 }, 
                 "790": {
                     "availableActions": {
@@ -2430,6 +2807,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -2442,7 +2820,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "800", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "800", 
                         "walk back": "", 
@@ -2450,10 +2828,11 @@
                         "walk right": "", 
                         "walk straight": "800"
                     }, 
-                    "availableItems": [
-                        "key"
-                    ], 
-                    "stepDescription": "Make a running jump towards the green platform"
+                    "availableItems": [], 
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "It will open the big gate on the other platform"
                 }, 
                 "800": {
                     "availableActions": {
@@ -2461,6 +2840,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -2473,7 +2853,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "810", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "810", 
                         "walk back": "", 
@@ -2482,7 +2862,10 @@
                         "walk straight": "810"
                     }, 
                     "availableItems": [], 
-                    "stepDescription": "Enter the chamber"
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "This gate is timed, so hurry"
                 }, 
                 "810": {
                     "availableActions": {
@@ -2490,6 +2873,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -2502,7 +2886,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "820", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "820", 
                         "walk back": "", 
@@ -2510,10 +2894,11 @@
                         "walk right": "", 
                         "walk straight": "820"
                     }, 
-                    "availableItems": [
-                        "large medipack"
-                    ], 
-                    "stepDescription": "Pick up the large medipack"
+                    "availableItems": [], 
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "Turn to the left and standing jump onto the block between this platform and the one with the gate"
                 }, 
                 "820": {
                     "availableActions": {
@@ -2521,6 +2906,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -2533,7 +2919,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "830", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "830", 
                         "walk back": "", 
@@ -2542,7 +2928,10 @@
                         "walk straight": "830"
                     }, 
                     "availableItems": [], 
-                    "stepDescription": "Climb out again"
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "Continue to the gate platform"
                 }, 
                 "830": {
                     "availableActions": {
@@ -2550,6 +2939,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -2562,7 +2952,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "840", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "840", 
                         "walk back": "", 
@@ -2570,10 +2960,11 @@
                         "walk right": "", 
                         "walk straight": "840"
                     }, 
-                    "availableItems": [
-                        "lever"
-                    ], 
-                    "stepDescription": "Climb up onto the platform with the lever"
+                    "availableItems": [], 
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "Quickly run through the open gate [if you fail, repeat this action]"
                 }, 
                 "840": {
                     "availableActions": {
@@ -2581,6 +2972,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -2593,7 +2985,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "850", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "850", 
                         "walk back": "", 
@@ -2602,7 +2994,10 @@
                         "walk straight": "850"
                     }, 
                     "availableItems": [], 
-                    "stepDescription": "Use it"
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "Run up the stairs"
                 }, 
                 "850": {
                     "availableActions": {
@@ -2610,6 +3005,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -2622,7 +3018,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "860", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "860", 
                         "walk back": "", 
@@ -2631,7 +3027,10 @@
                         "walk straight": "860"
                     }, 
                     "availableItems": [], 
-                    "stepDescription": "It will open the big gate on the other platform"
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "Follow them to the right"
                 }, 
                 "860": {
                     "availableActions": {
@@ -2639,6 +3038,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -2651,7 +3051,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "870", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "870", 
                         "walk back": "", 
@@ -2660,7 +3060,10 @@
                         "walk straight": "870"
                     }, 
                     "availableItems": [], 
-                    "stepDescription": "This gate is timed, so hurry"
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "Beware of the dart-emitters"
                 }, 
                 "870": {
                     "availableActions": {
@@ -2668,6 +3071,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -2680,7 +3084,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "880", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "880", 
                         "walk back": "", 
@@ -2689,7 +3093,10 @@
                         "walk straight": "880"
                     }, 
                     "availableItems": [], 
-                    "stepDescription": "Turn to the left and standing jump onto the block between this platform and the one with the gate"
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "Shoot the wolf in the chamber at the top, on the left"
                 }, 
                 "880": {
                     "availableActions": {
@@ -2697,8 +3104,11 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
+                        "examine key": "", 
                         "get": "", 
+                        "get key": "", 
                         "jump": "", 
                         "jump back": "", 
                         "jump left": "", 
@@ -2709,16 +3119,23 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "890", 
-                        "save": "", 
+                        "shot": "", 
+                        "shot key": "", 
                         "use": "", 
+                        "use key": "", 
                         "walk": "890", 
                         "walk back": "", 
                         "walk left": "", 
                         "walk right": "", 
                         "walk straight": "890"
                     }, 
-                    "availableItems": [], 
-                    "stepDescription": "Continue to the gate platform"
+                    "availableItems": [
+                        "key"
+                    ], 
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "Step onto the broken platform and drop through the Collapsible Floor"
                 }, 
                 "890": {
                     "availableActions": {
@@ -2726,6 +3143,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -2738,7 +3156,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "900", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "900", 
                         "walk back": "", 
@@ -2747,7 +3165,10 @@
                         "walk straight": "900"
                     }, 
                     "availableItems": [], 
-                    "stepDescription": "Quickly run through the open gate"
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "Turn right and run through the doorway"
                 }, 
                 "900": {
                     "availableActions": {
@@ -2755,8 +3176,11 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
+                        "examine key": "", 
                         "get": "", 
+                        "get key": "", 
                         "jump": "", 
                         "jump back": "", 
                         "jump left": "", 
@@ -2767,16 +3191,23 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "910", 
-                        "save": "", 
+                        "shot": "", 
+                        "shot key": "", 
                         "use": "", 
+                        "use key": "", 
                         "walk": "910", 
                         "walk back": "", 
                         "walk left": "", 
                         "walk right": "", 
                         "walk straight": "910"
                     }, 
-                    "availableItems": [], 
-                    "stepDescription": "(If you fail, repeat this action"
+                    "availableItems": [
+                        "key"
+                    ], 
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "At the end, turn left and make a running jump over the gap"
                 }, 
                 "910": {
                     "availableActions": {
@@ -2784,6 +3215,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -2796,7 +3228,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "920", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "920", 
                         "walk back": "", 
@@ -2805,7 +3237,10 @@
                         "walk straight": "920"
                     }, 
                     "availableItems": [], 
-                    "stepDescription": ")"
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "Turn left again"
                 }, 
                 "920": {
                     "availableActions": {
@@ -2813,6 +3248,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -2825,7 +3261,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "930", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "930", 
                         "walk back": "", 
@@ -2834,7 +3270,10 @@
                         "walk straight": "930"
                     }, 
                     "availableItems": [], 
-                    "stepDescription": "The Big Gate"
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "Run towards the medipack"
                 }, 
                 "930": {
                     "availableActions": {
@@ -2842,6 +3281,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -2854,7 +3294,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "940", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "940", 
                         "walk back": "", 
@@ -2863,7 +3303,10 @@
                         "walk straight": "940"
                     }, 
                     "availableItems": [], 
-                    "stepDescription": "Run up the stairs"
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "Draw weapons and shoot the wolf"
                 }, 
                 "940": {
                     "availableActions": {
@@ -2871,8 +3314,11 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
+                        "examine large medipack": "", 
                         "get": "", 
+                        "get large medipack": "", 
                         "jump": "", 
                         "jump back": "", 
                         "jump left": "", 
@@ -2883,16 +3329,23 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "950", 
-                        "save": "", 
+                        "shot": "", 
+                        "shot large medipack": "", 
                         "use": "", 
+                        "use large medipack": "", 
                         "walk": "950", 
                         "walk back": "", 
                         "walk left": "", 
                         "walk right": "", 
                         "walk straight": "950"
                     }, 
-                    "availableItems": [], 
-                    "stepDescription": "Follow them to the right"
+                    "availableItems": [
+                        "large medipack"
+                    ], 
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "Collect the large medipack"
                 }, 
                 "950": {
                     "availableActions": {
@@ -2900,8 +3353,11 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
+                        "examine lever": "", 
                         "get": "", 
+                        "get lever": "", 
                         "jump": "", 
                         "jump back": "", 
                         "jump left": "", 
@@ -2912,16 +3368,23 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "960", 
-                        "save": "", 
+                        "shot": "", 
+                        "shot lever": "", 
                         "use": "", 
+                        "use lever": "", 
                         "walk": "960", 
                         "walk back": "", 
                         "walk left": "", 
                         "walk right": "", 
                         "walk straight": "960"
                     }, 
-                    "availableItems": [], 
-                    "stepDescription": "Beware of the dart-emitters"
+                    "availableItems": [
+                        "lever"
+                    ], 
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "Use the lever in the chamber the wolf came out of"
                 }, 
                 "960": {
                     "availableActions": {
@@ -2929,6 +3392,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -2941,7 +3405,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "970", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "970", 
                         "walk back": "", 
@@ -2949,10 +3413,11 @@
                         "walk right": "", 
                         "walk straight": "970"
                     }, 
-                    "availableItems": [
-                        "wolf"
-                    ], 
-                    "stepDescription": "Shoot the wolf in the chamber at the top, on the left"
+                    "availableItems": [], 
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "Return outside and go towards the first window on the right"
                 }, 
                 "970": {
                     "availableActions": {
@@ -2960,6 +3425,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -2972,7 +3438,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "980", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "980", 
                         "walk back": "", 
@@ -2980,10 +3446,11 @@
                         "walk right": "", 
                         "walk straight": "980"
                     }, 
-                    "availableItems": [
-                        "key"
-                    ], 
-                    "stepDescription": "Step onto the broken platform and drop through the Collapsible Floor"
+                    "availableItems": [], 
+                    "consequences": {
+                        "life": 0
+                    }, 
+                    "stepDescription": "Slide down the hill and run through the open gate"
                 }, 
                 "980": {
                     "availableActions": {
@@ -2991,6 +3458,7 @@
                         "climb up": "", 
                         "come down": "", 
                         "come up": "", 
+                        "cross": "", 
                         "examine": "", 
                         "get": "", 
                         "jump": "", 
@@ -3003,7 +3471,7 @@
                         "run left": "", 
                         "run right": "", 
                         "run straight": "990", 
-                        "save": "", 
+                        "shot": "", 
                         "use": "", 
                         "walk": "990", 
                         "walk back": "", 
@@ -3012,277 +3480,10 @@
                         "walk straight": "990"
                     }, 
                     "availableItems": [], 
-                    "stepDescription": "Turn right and run through the doorway"
-                }, 
-                "990": {
-                    "availableActions": {
-                        "climb on": "", 
-                        "climb up": "", 
-                        "come down": "", 
-                        "come up": "", 
-                        "examine": "", 
-                        "get": "", 
-                        "jump": "", 
-                        "jump back": "", 
-                        "jump left": "", 
-                        "jump right": "", 
-                        "jump straight": "", 
-                        "run": "1000", 
-                        "run back": "", 
-                        "run left": "", 
-                        "run right": "", 
-                        "run straight": "1000", 
-                        "save": "", 
-                        "use": "", 
-                        "walk": "1000", 
-                        "walk back": "", 
-                        "walk left": "", 
-                        "walk right": "", 
-                        "walk straight": "1000"
+                    "consequences": {
+                        "life": 0
                     }, 
-                    "availableItems": [
-                        "key"
-                    ], 
-                    "stepDescription": "At the end, turn left and make a running jump over the gap"
-                }, 
-                "1000": {
-                    "availableActions": {
-                        "climb on": "", 
-                        "climb up": "", 
-                        "come down": "", 
-                        "come up": "", 
-                        "examine": "", 
-                        "get": "", 
-                        "jump": "", 
-                        "jump back": "", 
-                        "jump left": "", 
-                        "jump right": "", 
-                        "jump straight": "", 
-                        "run": "1010", 
-                        "run back": "", 
-                        "run left": "", 
-                        "run right": "", 
-                        "run straight": "1010", 
-                        "save": "", 
-                        "use": "", 
-                        "walk": "1010", 
-                        "walk back": "", 
-                        "walk left": "", 
-                        "walk right": "", 
-                        "walk straight": "1010"
-                    }, 
-                    "availableItems": [], 
-                    "stepDescription": "Turn left again"
-                }, 
-                "1010": {
-                    "availableActions": {
-                        "climb on": "", 
-                        "climb up": "", 
-                        "come down": "", 
-                        "come up": "", 
-                        "examine": "", 
-                        "get": "", 
-                        "jump": "", 
-                        "jump back": "", 
-                        "jump left": "", 
-                        "jump right": "", 
-                        "jump straight": "", 
-                        "run": "1020", 
-                        "run back": "", 
-                        "run left": "", 
-                        "run right": "", 
-                        "run straight": "1020", 
-                        "save": "", 
-                        "use": "", 
-                        "walk": "1020", 
-                        "walk back": "", 
-                        "walk left": "", 
-                        "walk right": "", 
-                        "walk straight": "1020"
-                    }, 
-                    "availableItems": [], 
-                    "stepDescription": "Run towards the medipack"
-                }, 
-                "1020": {
-                    "availableActions": {
-                        "climb on": "", 
-                        "climb up": "", 
-                        "come down": "", 
-                        "come up": "", 
-                        "examine": "", 
-                        "get": "", 
-                        "jump": "", 
-                        "jump back": "", 
-                        "jump left": "", 
-                        "jump right": "", 
-                        "jump straight": "", 
-                        "run": "1030", 
-                        "run back": "", 
-                        "run left": "", 
-                        "run right": "", 
-                        "run straight": "1030", 
-                        "save": "", 
-                        "use": "", 
-                        "walk": "1030", 
-                        "walk back": "", 
-                        "walk left": "", 
-                        "walk right": "", 
-                        "walk straight": "1030"
-                    }, 
-                    "availableItems": [
-                        "wolf"
-                    ], 
-                    "stepDescription": "Draw weapons and shoot the wolf"
-                }, 
-                "1030": {
-                    "availableActions": {
-                        "climb on": "", 
-                        "climb up": "", 
-                        "come down": "", 
-                        "come up": "", 
-                        "examine": "", 
-                        "get": "", 
-                        "jump": "", 
-                        "jump back": "", 
-                        "jump left": "", 
-                        "jump right": "", 
-                        "jump straight": "", 
-                        "run": "1040", 
-                        "run back": "", 
-                        "run left": "", 
-                        "run right": "", 
-                        "run straight": "1040", 
-                        "save": "", 
-                        "use": "", 
-                        "walk": "1040", 
-                        "walk back": "", 
-                        "walk left": "", 
-                        "walk right": "", 
-                        "walk straight": "1040"
-                    }, 
-                    "availableItems": [
-                        "large medipack"
-                    ], 
-                    "stepDescription": "Collect the large medipack"
-                }, 
-                "1040": {
-                    "availableActions": {
-                        "climb on": "", 
-                        "climb up": "", 
-                        "come down": "", 
-                        "come up": "", 
-                        "examine": "", 
-                        "get": "", 
-                        "jump": "", 
-                        "jump back": "", 
-                        "jump left": "", 
-                        "jump right": "", 
-                        "jump straight": "", 
-                        "run": "1050", 
-                        "run back": "", 
-                        "run left": "", 
-                        "run right": "", 
-                        "run straight": "1050", 
-                        "save": "", 
-                        "use": "", 
-                        "walk": "1050", 
-                        "walk back": "", 
-                        "walk left": "", 
-                        "walk right": "", 
-                        "walk straight": "1050"
-                    }, 
-                    "availableItems": [
-                        "wolf", 
-                        "lever"
-                    ], 
-                    "stepDescription": "Use the lever in the chamber the wolf came out of"
-                }, 
-                "1050": {
-                    "availableActions": {
-                        "climb on": "", 
-                        "climb up": "", 
-                        "come down": "", 
-                        "come up": "", 
-                        "examine": "", 
-                        "get": "", 
-                        "jump": "", 
-                        "jump back": "", 
-                        "jump left": "", 
-                        "jump right": "", 
-                        "jump straight": "", 
-                        "run": "1060", 
-                        "run back": "", 
-                        "run left": "", 
-                        "run right": "", 
-                        "run straight": "1060", 
-                        "save": "", 
-                        "use": "", 
-                        "walk": "1060", 
-                        "walk back": "", 
-                        "walk left": "", 
-                        "walk right": "", 
-                        "walk straight": "1060"
-                    }, 
-                    "availableItems": [], 
-                    "stepDescription": "Return outside and go towards the first window on the right"
-                }, 
-                "1060": {
-                    "availableActions": {
-                        "climb on": "", 
-                        "climb up": "", 
-                        "come down": "", 
-                        "come up": "", 
-                        "examine": "", 
-                        "get": "", 
-                        "jump": "", 
-                        "jump back": "", 
-                        "jump left": "", 
-                        "jump right": "", 
-                        "jump straight": "", 
-                        "run": "1070", 
-                        "run back": "", 
-                        "run left": "", 
-                        "run right": "", 
-                        "run straight": "1070", 
-                        "save": "", 
-                        "use": "", 
-                        "walk": "1070", 
-                        "walk back": "", 
-                        "walk left": "", 
-                        "walk right": "", 
-                        "walk straight": "1070"
-                    }, 
-                    "availableItems": [], 
-                    "stepDescription": "Slide down the hill and run through the open gate"
-                }, 
-                "1070": {
-                    "availableActions": {
-                        "climb on": "", 
-                        "climb up": "", 
-                        "come down": "", 
-                        "come up": "", 
-                        "examine": "", 
-                        "get": "", 
-                        "jump": "", 
-                        "jump back": "", 
-                        "jump left": "", 
-                        "jump right": "", 
-                        "jump straight": "", 
-                        "run": "1080", 
-                        "run back": "", 
-                        "run left": "", 
-                        "run right": "", 
-                        "run straight": "1080", 
-                        "save": "", 
-                        "use": "", 
-                        "walk": "1080", 
-                        "walk back": "", 
-                        "walk left": "", 
-                        "walk right": "", 
-                        "walk straight": "1080"
-                    }, 
-                    "availableItems": [], 
-                    "stepDescription": ""
+                    "stepDescription": "You're done!"
                 }
             }
         }

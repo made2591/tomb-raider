@@ -46,7 +46,10 @@ STARTING_SEQUENCE = "> "
 DEFAULT_ACTION = "move up"
 
 # items keywords
-ITESM_KEYWORDS = ["footprints", "key", "wolf", "wolves", "bear", "small medipack", "large medipack", "lever", "secret", "slots"]
+ITESM_KEYWORDS = ["footprints", "key", "small medipack", "large medipack", "lever", "secret", "slots"]
+
+# non player character
+NPC_KEYWORDS = ["wolf", "wolves", "bear", "bears", "arrow", "arrows", "bat", "bats"]
 
 # stopwords
 STOPWORDS = ["the", "a", "with"]
@@ -75,7 +78,11 @@ GAME_STRUCTURE = {
 			"noJump":[
 				"You can't jump here.",
 				"It is not the right thing to do..."
-			],		
+			],
+			"noCross":[
+				"There is nothing to cross is here",
+				"It is not the right thing to do..."
+			],
 			"noClimb":[
 				"You can't climb here.",
 				"It is not the right thing to do..."
@@ -99,6 +106,10 @@ GAME_STRUCTURE = {
 				"Maybe later",
 				"You don't have this item in your pocket"
 			],
+			"noShot":[
+				"It is not the right thing to do...",
+				"You are shooting randomly"				
+			],
 			"noSave":[
 				"No diamond on the horizon..."
 			]
@@ -112,6 +123,9 @@ GAME_STRUCTURE = {
 		  },
 		  "jump":{
 		     "usageMessage":"The JUMP command lets Lara jump into the scenario. If Lara is not stucked by something in the scene, or there's any reason why she can not move, you will be always able to jump. The jump command automatically setup the number of steps needed and eventually let Lara hang on the edge. You can jump in a specific direction in the scene using the command JUMP [STRAIGHT/DOWN/LEFT/RIGHT]. Note: if you type and execute JUMP, you will JUMP STRAIGHT by default."
+		  },
+		  "cross":{
+		     "usageMessage":"The CROSS command lets Lara cross something in the scene. You can cross in the scene using the command CROSS [PREP] [SOMETHING]."
 		  },
 		  "climb":{
 		     "usageMessage":"The CLIMB command lets Lara climb up/on something in the scene. You won't be always able to climb: Lara need something to climb up/on to complete this action. You can climb in the scene using the command CLIMB [UP/ON] [SOMETHING]. Note: if you type and execute CLIMB without specific element, Lara won't complete the action."
@@ -127,6 +141,9 @@ GAME_STRUCTURE = {
 		  },
 		  "use":{
 		     "usageMessage":"The USE action is used to use an item you hold. If you can't use the item in the scene than the item will remain in your pocket. You can use an item using the command USE [ITEM_NAME] with the name of an item in the scene."
+		  },
+		  "shot":{
+		     "usageMessage":"The SHOT action is used to use guns against something or someone. You can shot something or someone using the command USE [ITEM_NAME] with the name of an item in the scene."
 		  },
 		  "save":{
 		     "usageMessage":"The SAVE action is used to save the game. You can save the game only when you meet a SAVE DIAMOND in the scene, using the command SAVE."
@@ -166,7 +183,7 @@ def getLinksLevel():
 def createGame(defaultAction = DEFAULT_ACTION):
 
 	# separate lines
-	with open("./levels/caves.txt", "r") as f:
+	with open("./levels/caves_worked.txt", "r") as f:
 		
 		# read each lines
 		lines = f.readlines()
@@ -190,6 +207,7 @@ def createGame(defaultAction = DEFAULT_ACTION):
 			"stepDescription" : step,
 			"availableItems" : [],
 			"availableActions" : {},
+			"consequences" : {"life" : 0}
 		}
 
 		# insert items
@@ -222,6 +240,8 @@ def createGame(defaultAction = DEFAULT_ACTION):
 			"jump left" : "",
 			"jump right" : "",
 
+			"cross" : "",
+
 			"climb up" : "",
 			"climb on" : "",
 
@@ -231,9 +251,23 @@ def createGame(defaultAction = DEFAULT_ACTION):
 			"examine" : "",
 			"get" : "",
 			"use" : "",
-
-			"save": ""
+			"shot": ""
 		}
+
+		# add action for specific items
+		for keyword in GAME_STRUCTURE["levels"]["cave"]["steps"][index]["availableItems"]:
+
+			# add examine action
+			GAME_STRUCTURE["levels"]["cave"]["steps"][index]["availableActions"]["examine "+keyword] = ""
+
+			# add get action
+			GAME_STRUCTURE["levels"]["cave"]["steps"][index]["availableActions"]["get "+keyword] = ""
+
+			# add use action
+			GAME_STRUCTURE["levels"]["cave"]["steps"][index]["availableActions"]["use "+keyword] = ""
+
+			# add shot action
+			GAME_STRUCTURE["levels"]["cave"]["steps"][index]["availableActions"]["shot "+keyword] = ""
 
 		index += STEP_OFFSET
 
@@ -243,7 +277,7 @@ def createGame(defaultAction = DEFAULT_ACTION):
 	# 		print "\ta"+str(index-1)+" -> a"+str(index)+" [ label=\""+defaultAction+"\" ];"
 
 	# save output game
-	with open("./levels/caves_base.json", "wb") as f:
+	with open("./levels/caves.json", "wb") as f:
 
 		# save json output
 		f.write(json.dumps(GAME_STRUCTURE, indent=4, ensure_ascii=False, sort_keys=True))
@@ -297,7 +331,7 @@ def printSentence(sentence, pause = CHAR_PAUSE, columns = COLUMNS_DIM):
 def playGame():
 
 	# load game from file
-	game = json.loads((open("./levels/caves_manual.json", "r").read()))
+	game = json.loads((open("./levels/caves.json", "r").read()))
 
 	# vintage print welcome sentence
 	printSentence(STARTING_SEQUENCE+game["levels"]["cave"]["levelDescription"], 
@@ -329,6 +363,29 @@ def playGame():
 		# get available actions in the step
 		availableActions = game["levels"]["cave"]["steps"][actualStep]["availableActions"]
 
+		# consequences
+		consequences = game["levels"]["cave"]["steps"][actualStep]["consequences"]
+
+		if game["player"]["life"]-consequences["life"] < game["player"]["life"]:
+			game["player"]["life"] -= consequences["life"]
+			printSentence(STARTING_SEQUENCE+"You got hurted: your life is at "+str(game["player"]["life"])+".",
+						  pause = VELOCITY[game["player"]["velocity"]], 
+						  columns = game["player"]["columns"])
+			raw_input("")
+
+		if game["player"]["life"] < 31:
+			printSentence(STARTING_SEQUENCE+"Your life is under 30%: use a medikit if you own it, otherwise...be careful", 
+						  pause = VELOCITY[game["player"]["velocity"]], 
+						  columns = game["player"]["columns"])			
+			raw_input("")
+
+		if game["player"]["life"] < 1:
+			printSentence(STARTING_SEQUENCE+"You die. Game over!", 
+						  pause = VELOCITY[game["player"]["velocity"]], 
+						  columns = game["player"]["columns"])
+			raw_input("")
+			sys.exit()
+
 		# vintage print step description
 		printSentence(STARTING_SEQUENCE+stepDescription, 
 					  pause = VELOCITY[game["player"]["velocity"]], 
@@ -344,8 +401,8 @@ def playGame():
 			# ask the player for the action
 			choice = raw_input(STARTING_SEQUENCE)
 
-			# if the typed choice is in the available actions set
-			if choice in availableActions.keys():
+			# if the inserted choice match the action
+			if choice in availableActions:
 
 				# if the action let Lara move forward to next step
 				if game["levels"]["cave"]["steps"][actualStep]["availableActions"][choice] != "": 
@@ -355,9 +412,6 @@ def playGame():
 
 					# stop looping
 					continueLooping = False
-
-				# epsilon move in the actual step: print a random message from the action taken
-				else:
 
 					matchAction = False
 
@@ -383,33 +437,33 @@ def playGame():
 									  pause = 0, 
 									  columns = 80)
 
-			# if the choice the help command
-			elif choice == HELP_COMMAND:
+				# if the choice the help command
+				elif choice == HELP_COMMAND:
 
-				# pretty print help welcome
-				print STARTING_SEQUENCE+"Available commands:\n"
+					# pretty print help welcome
+					print STARTING_SEQUENCE+"Available commands:\n"
 
-				# for each available action in the game
-				for action in game["actions"]:
+					# for each available action in the game
+					for action in game["actions"]:
 
-					# vintage print the action name
-					printSentence("- "+action.upper())
-					print
+						# vintage print the action name
+						printSentence("- "+action.upper())
+						print
 
-					# vintage print the action manual
-					printSentence("\t"+game["actions"][action]["usageMessage"], columns = COLUMNS_DIM-6)
-					print
+						# vintage print the action manual
+						printSentence("\t"+game["actions"][action]["usageMessage"], columns = COLUMNS_DIM-6)
+						print
 
-					# wait for input
-					raw_input("")
+						# wait for input
+						raw_input("")
 
-			# if the choice is the global available set
-			else:
+				# if the choice is the global available set
+				else:
 
-				# vintage print the message
-				printSentence(game["defaultMessages"]["default"], 
-							  pause = VELOCITY[game["player"]["velocity"]], 
-							  columns = game["player"]["columns"])
+					# vintage print the message
+					printSentence(game["defaultMessages"]["default"], 
+								  pause = VELOCITY[game["player"]["velocity"]], 
+								  columns = game["player"]["columns"])
 
 createGame()
 playGame()
